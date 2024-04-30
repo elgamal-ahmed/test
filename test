@@ -1,0 +1,50 @@
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class TopicController {
+
+    @GetMapping("/topics")
+    public String getTopics() {
+        return "{\"topics\": [{\"name\": \"orders\", \"producers\": [\"order-service\", \"payment-service\"], \"consumers\": [\"shipping-service\", \"inventory-service\"], \"kubernetes_labels\": {\"app\": \"ecommerce\", \"tier\": \"backend\"}}, {\"name\": \"user-events\", \"producers\": [\"user-service\", \"authentication-service\"], \"consumers\": [\"recommendation-service\", \"notification-service\"], \"kubernetes_labels\": {\"app\": \"user-management\", \"tier\": \"backend\"}}, {\"name\": \"product-updates\", \"producers\": [\"catalog-service\"], \"consumers\": [\"recommendation-service\", \"inventory-service\"], \"kubernetes_labels\": {\"app\": \"product-management\", \"tier\": \"backend\"}}]}";
+    }
+}
+
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+
+{
+  "topics": [
+    {
+      "name": "orders",
+      "producers": ["order-service", "payment-service"],
+      "consumers": ["shipping-service", "inventory-service"],
+      "kubernetes_labels": {
+        "app": "ecommerce",
+        "tier": "backend"
+      }
+    },
+    {
+      "name": "user-events",
+      "producers": ["user-service", "authentication-service"],
+      "consumers": ["recommendation-service", "notification-service"],
+      "kubernetes_labels": {
+        "app": "user-management",
+        "tier": "backend"
+      }
+    },
+    {
+      "name": "product-updates",
+      "producers": ["catalog-service"],
+      "consumers": ["recommendation-service", "inventory-service"],
+      "kubernetes_labels": {
+        "app": "product-management",
+        "tier": "backend"
+      }
+    }
+  ]
+}
